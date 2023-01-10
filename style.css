@@ -1,0 +1,8 @@
+thead {
+    font-weight: 700;
+  }
+
+table, thead, td {
+    border: 1px solid;
+  }
+
