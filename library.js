@@ -1,20 +1,14 @@
 let myLibrary = [];
 
-const book1 = new Book("Poop", "Nick", 275, "read");
-const book2 = new Book("Pee", "Emil", 275, "not read");
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-toString();
-
 let table = document.querySelector(".data");
 let button = document.querySelector(".add");
 button.addEventListener("click", () => {
-  let title = document.getElementById("title");
-  let author = document.getElementById("author");
-  let pages = document.getElementById("pages");
-  let read = document.getElementById("read");
+  let title = document.getElementById("title").value;
+  let author = document.getElementById("author").value;
+  let pages = document.getElementById("pages").value;
+  let read = document.getElementById("read").checked;
   const newBook = new Book(title, author, pages, read);
-  myLibrary.push(newBook);
+  addBookToLibrary(newBook);
   document.getElementById("book-form").reset();
   populateTable();
 });
@@ -38,7 +32,10 @@ function toString() {
 }
 
 function populateTable() {
-  let table = document.querySelector(".data");
+  let table = document.getElementById("data");
+  while (table.childNodes.length) {
+    table.removeChild(table.childNodes[0]);
+  }
   myLibrary.forEach((element, ind, arr) => {
     let row = document.createElement("tr");
     let titleData = document.createElement("td");

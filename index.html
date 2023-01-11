@@ -11,11 +11,11 @@
   <body>
     <form id="book-form">
       <label for="title">Title:</label><br />
-      <input type="text" id="title" name="title" /><br />
+      <input type="text" id="title" name="title" required /><br />
       <label for="author">Author:</label><br />
-      <input type="text" id="author" name="author" /><br />
+      <input type="text" id="author" name="author" required /><br />
       <label for="pages">Pages:</label><br />
-      <input type="text" id="pages" name="pages" /><br />
+      <input type="text" id="pages" name="pages" required /><br />
       <label for="read">Read?</label><br />
       <input type="checkbox" id="read" value="read" />
     </form>
@@ -28,11 +28,7 @@
           <th>Read</th>
         </tr>
       </thead>
-      <tbody id="data">
-        <tr>
-          <td></td>
-        </tr>
-      </tbody>
+      <tbody id="data"></tbody>
     </table>
     <button class="add">Add book</button>
   </body>
