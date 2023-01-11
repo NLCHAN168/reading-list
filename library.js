@@ -7,10 +7,15 @@ button.addEventListener("click", () => {
   let author = document.getElementById("author").value;
   let pages = document.getElementById("pages").value;
   let read = document.getElementById("read").checked;
-  const newBook = new Book(title, author, pages, read);
-  addBookToLibrary(newBook);
-  document.getElementById("book-form").reset();
-  populateTable();
+  if (!validate(title, author, pages)) {
+    alert("Please enter valid fields!");
+    document.getElementById("book-form").reset();
+  } else {
+    const newBook = new Book(title, author, pages, read);
+    addBookToLibrary(newBook);
+    populateTable();
+    document.getElementById("book-form").reset();
+  }
 });
 
 function Book(title, author, pages, read) {
@@ -29,6 +34,13 @@ function addBookToLibrary(book) {
 
 function toString() {
   return myLibrary.forEach((element) => console.log(element.info()));
+}
+
+function validate(title, author, pages) {
+  if (title === "" || author === "" || pages === "") {
+    return false;
+  }
+  return true;
 }
 
 function populateTable() {
