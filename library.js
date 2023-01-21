@@ -70,7 +70,6 @@ function populateTable() {
     titleData.innerText = element.title;
     authorData.innerText = element.author;
     pagesData.innerText = element.pages;
-    // readData.innerText = element.read;
     row.appendChild(titleData);
     row.appendChild(authorData);
     row.appendChild(pagesData);
