@@ -37,7 +37,7 @@ function toString() {
 }
 
 function validate(title, author, pages) {
-  if (title === "" || author === "" || pages === "") {
+  if (title === "" || author === "" || !Number.isInteger(parseInt(pages))) {
     return false;
   }
   return true;
@@ -54,21 +54,28 @@ function populateTable() {
     let authorData = document.createElement("td");
     let pagesData = document.createElement("td");
     let readData = document.createElement("td");
+    let toggleRead = document.createElement("button");
+    toggleRead.addEventListener("click", () => {
+      myLibrary[ind].read = !myLibrary[ind].read;
+      populateTable();
+    });
     let remove = document.createElement("td");
     let removeButton = document.createElement("button");
     removeButton.innerText = "REMOVE";
-    //    removeButton.addEventListener("click", (arr[ind]) => {
-    //
-    //    });
+    removeButton.addEventListener("click", () => {
+      myLibrary.splice(ind, 1);
+      populateTable();
+    });
     remove.appendChild(removeButton);
     titleData.innerText = element.title;
     authorData.innerText = element.author;
     pagesData.innerText = element.pages;
-    readData.innerText = element.read;
+    // readData.innerText = element.read;
     row.appendChild(titleData);
     row.appendChild(authorData);
     row.appendChild(pagesData);
-    row.appendChild(readData);
+    toggleRead.innerText = element.read;
+    row.appendChild(toggleRead);
     row.appendChild(remove);
     table.appendChild(row);
   });
